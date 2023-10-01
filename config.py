@@ -20,3 +20,6 @@ class ConfigMrg():
     
     def get_secret_key(self):
         return self.conf['credential']['secret_key']
+    
+    def get_domain(self):
+        return self.conf['domain']['domain']

@@ -31,7 +31,7 @@ def getRecordId(client:dnspod_client.DnspodClient):
     try:
         req = models.DescribeRecordListRequest()
         params = {
-            "Domain": "litesite.cn"
+            "Domain": "{}".format(ConfigMrg().get_domain())
         }
         req.from_json_string(json.dumps(params))
         res = client.DescribeRecordList(req)
@@ -50,7 +50,7 @@ def getRecordId(client:dnspod_client.DnspodClient):
 
 # 获取ipv6地址
 def getIpv6()->str:
-    cmd = subprocess.Popen("ip -f inet6  address | sed -n '/scope link/p' | awk '{print $2}' | sed 's#/.*##'", stdout=subprocess.PIPE, shell = True)
+    cmd = subprocess.Popen("ip -f inet6  address | sed -n '/\/64.*dynamic/p' | awk '{print $2}' | sed 's#/.*##'", stdout=subprocess.PIPE, shell = True)
     cmd.wait(2)
     return cmd.stdout.read().decode().strip()
 
@@ -84,7 +84,7 @@ try:
         # 实例化一个请求对象,每个接口都会对应一个request对象
         req = models.ModifyRecordRequest()
         params = {
-            "Domain": "litesite.cn",
+            "Domain": "{}".format(ConfigMrg().get_domain()),
             "RecordType": "AAAA",
             "RecordLine": "默认",
             "Value": addr_ipv6,

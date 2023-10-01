@@ -13,4 +13,6 @@
 secret_id= 
 secret_key= 
 
+[domain]
+domain=
 ```
