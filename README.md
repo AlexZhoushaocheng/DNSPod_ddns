@@ -5,6 +5,13 @@
 * tencentcloud-sdk-python-common==3.0.991
 * tencentcloud-sdk-python-dnspod==3.0.991
 
+
+``` sh
+使用国内源安装：
+
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tencentcloud-sdk-python-common
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tencentcloud-sdk-python-dnspod
+```
 ## usage
 
 ### conf.ini
@@ -16,3 +23,6 @@ secret_key=
 [domain]
 domain=
 ```
+
+## Run
+./ddns.sh

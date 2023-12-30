@@ -76,7 +76,10 @@ try:
     
     addr_ipv6 = getIpv6()
     logging.info("local ipv6:{}".format(addr_ipv6))
-    
+    if addr_ipv6 == "":
+        logging.error("ipv6 is empty, ensure your ipv6 network is okay")
+        logging.info('---------------------------update failed-------------------------------')
+        exit(-1)
     # 当前记录中的值和本地的ip相同则不用更新
     if current_ip_value == addr_ipv6:
         logging.info("current record value is already same as local ip, no need update")
